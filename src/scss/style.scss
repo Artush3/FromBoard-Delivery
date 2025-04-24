@@ -1,0 +1,536 @@
+@use "mixins.scss" as *;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+
+/* Reset and base styles  */
+* {
+	font-family: "Noto Sans JP", sans-serif;
+	padding: 0px;
+	margin: 0px;
+	border: none;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Links */
+
+a, a:link, a:visited  {
+    text-decoration: none;
+}
+
+a:hover  {
+    text-decoration: none;
+}
+
+/* Common */
+
+aside, nav, footer, header, section, main {
+	display: block;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    font-size: inherit;
+	font-weight: inherit;
+}
+
+ul, ul li {
+	list-style: none;
+}
+
+img {
+	vertical-align: top;
+}
+
+img, svg {
+	max-width: 100%;
+	height: auto;
+}
+
+address {
+    font-style: normal;
+}
+
+/* Form */
+
+input, textarea, button, select {
+	font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background-color: transparent;
+}
+
+input::-ms-clear {
+	display: none;
+}
+
+button, input[type="submit"] {
+    display: inline-block;
+    box-shadow: none;
+    background-color: transparent;
+    background: none;
+    cursor: pointer;
+}
+
+input:focus, input:active,
+button:focus, button:active {
+    outline: none;
+}
+
+button::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+
+label {
+	cursor: pointer;
+}
+
+legend {
+	display: block;
+}
+
+input[type='file'] {
+	max-width: 100%;
+}
+
+div.conteiner_content {
+	margin: 0 auto;
+	max-width: 1596px;
+	padding: 0 30px;
+}
+
+header.header {
+	@include main_block(20px, #F9FAFB);
+
+	section.header-description {
+		@extend .header-navigation;
+		margin-bottom: 32px;
+
+		div.header-description-price {
+			@include flex(center) {
+				column-gap: 10px;
+			};
+			
+			div.header-description-price-text {
+				text-align: end;
+
+				p {
+					@include text(400, 16px, 24px);
+				}
+			}
+
+			hr {
+				border-left: 1px solid #A78BFA; 
+				height: 76px;
+			}
+
+			div.header-description-price-contact {
+				h1 {
+					@include text(900, 36px, 40px);
+				}
+
+				h2 {
+					@include text(300, 24px, 32px);
+				}
+			}
+		}
+	}
+
+	section.header-navigation {
+		@include flex(center, space-between);
+
+		nav.header-navigation_way {
+			@include flex(center) {
+				column-gap: 30px;
+			}
+
+			> a {
+				@include link;
+			}
+		}
+
+		> a {
+			button {
+				@include button(196px, 44px, 4px);
+			}
+		}
+	}
+}
+
+main.main {
+	@include main_block(75px, #E5E7EB);
+
+	section.details {
+		@include flex(center, space-between) {
+			column-gap: 20px;
+			margin-bottom: 80px;
+		};
+
+		div.details-description {
+			max-width: 756px;
+			min-height: 584px;
+			position: relative;
+
+			div.details-description-text {
+				h1 {
+					@include text(900, 36px, 40px);
+				}
+	
+				p {
+					@include text(400, 20px, 28px) {
+						margin-top: 30px;
+					};
+				}
+			}
+
+			img {
+				position: absolute;
+				width: 100%;
+				bottom: 0;
+			}
+		}
+
+		div.details-calculator {
+			width: 756px;
+			min-height: 584px;
+			background-color: #F9FAFB;
+			border-radius: 16px;
+			@include flex(center, center);
+			text-align: center;
+			
+			div.details-calculator-conteiner {
+				max-width: 496px;
+
+				div.details-calculator-conteiner-desc {
+					max-width: 358px;
+					justify-self: center;
+
+					h1 {
+						@include text(700, 30px, 36px) {
+							margin-bottom: 15px;
+						};
+					}
+
+					p {
+						@include text(400, 16px, 24px);
+					}
+				}
+
+				form {
+					margin-top: 25px;
+
+					input {
+						@include input;
+					}
+
+					div.details-calculator-conteiner-form {
+						@include grid(2, 25px) {
+							margin: 25px 0;
+						};
+					}
+
+					button {
+						@include button(100%, 44px, 4px);
+					}
+				}
+			}
+		}
+	}
+
+	section.advantages {
+		margin-bottom: 100px;
+
+		h1 {
+			@include text(900, 30px, 36px) {
+				text-align: center;
+				margin-bottom: 50px;
+			}
+		}
+
+		div.advantages-example {
+			@include grid(3, 80px);
+
+			div.advantages-example-item {
+				@include flex(center, center) {
+					column-gap: 10px;
+				};
+
+				div.advantages-example-item-desc {
+					max-width: 300px;
+
+					h2 {
+						@include text(900, 24px, 32px);
+					}
+	
+					p {
+						@include text(400, 14px, 20px);
+					}
+				}
+			}
+		}
+	}
+
+	section.guarantee {
+		text-align: center;
+		margin-bottom: 70px;
+
+		div.guarantee-description {
+			max-width: 756px;
+			justify-self: center;
+			text-align: center;
+
+			h1 {
+				@include text(900, 30px, 36px);
+			}
+
+			p {
+				@include text(400, 16px, 24px) {
+					margin-top: 15px;
+				};
+			}
+		}
+
+		div.guarantee-example {
+			@include flex(start, space-between);
+			margin: 30px 0;
+
+			div.guarantee-example-item {
+				max-width: 366px;
+
+				img {
+					width: 100%;
+				}
+
+				p {
+					@include text(900, 18px, 28px);
+				}
+			}
+		}
+
+		button {
+			@include button(315px, 56px, 12px);
+		}
+	}
+
+	section.reviews {
+		margin-bottom: 80px;
+
+		> h1 {
+			@include text(900, 30px, 36px);
+			justify-self: center;
+			margin-bottom: 30px;
+		}
+
+		div.reviews-example {
+			@include flex(center, space-between);
+
+			div.slider {
+				width: 1276px;
+				overflow: hidden;
+
+				div.slides {
+					@include flex(center, space-between) {
+						column-gap: 2.1%
+					};
+					transition: all .3s ease-in-out;
+					width: 100%;
+
+					div.slide {
+						position: relative;
+						padding: 30px;
+						border-radius: 16px;
+						min-width: 48%;
+						background-color: #F9FAFB;
+
+						h1 {
+							@include text(700, 24px, 32px);
+						}
+
+						img {
+							float: right;
+						}
+
+						p {
+							@include text(300, 24px, 32px, #6B7280);
+							position: absolute;
+							bottom: 30px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	section.questions {
+		width: 100%;
+		min-height: 554px;
+		background-color: #F9FAFB;
+		border-radius: 16px;
+		@include flex(center, center);
+
+		div.questions-form {
+			text-align: center;
+			max-width: 497px;
+
+			h1 {
+				@include text(900, 30px, 36px) {
+					margin-bottom: 20px;
+				};
+			}
+
+			div.questions-form-input {
+				@include grid(2, 20px);
+			}
+
+			input {
+				@include input;
+			}
+
+			textarea {
+				resize: none;
+				margin: 20px 0;
+				border: 2px solid #111827;
+				border-radius: 4px;
+				height: 150px;
+				width: 100%;
+				padding: 0 10px;
+
+				&::placeholder {
+					@include text(400, 16px, 24px, #9CA3AF);
+				}
+
+				&:hover {
+					border-color: #8B5CF6;
+
+					&::placeholder {
+						color: #8B5CF6;
+					}
+				}
+
+				&:focus {
+					&::placeholder {
+						color: #111827;
+					}
+				}
+			}
+
+			button {
+				@include button(100%, 44px, 4px);
+			}
+		}
+	}
+
+	@media(max-width:1350px) {
+		section.details {
+			display: block;
+
+			div.details-description {
+				max-width: 100%;
+				min-height: 232px;
+				@include flex(center, space-between);
+				position: static;
+
+				div.details-description-text {
+					max-width: 505px;
+
+					p {
+						margin-top: 15px;
+					}
+				}
+
+				img {
+					width: 505px;
+					position: static;
+				}
+			}
+
+			div.details-calculator {
+				margin-top: 30px;
+				width: 100%;
+			}
+		}
+
+		section.advantages {
+			div.advantages-example {
+				@include grid(2, 80px);
+			}
+		}
+
+		section.guarantee {
+			div.guarantee-example {
+				@include grid(2, 20px);
+
+				div.guarantee-example-item {
+					justify-self: center;
+				}
+			}
+		}
+	}
+}
+
+footer.footer {
+	@include main_block(40px, #111827);
+
+	section.footer-description {
+		@include flex(center, space-between);
+
+		div.footer-description-logo {
+			div.footer-description-logo-smile {
+				@include flex(center) {
+					column-gap: 5px;
+				};
+
+				p {
+					@include text(400, 12px, 16px, #F9FAFB) {
+						margin-top: 5px;
+					};
+				}
+			}
+		}
+
+		nav.footer-description-navigation {
+			@include flex(center) {
+				column-gap: 30px;
+			}
+
+			> a {
+				@include link(#F9FAFB);
+			}
+		}
+
+		div.footer-description-contact {
+			h1 {
+				@include text(900, 36px, 40px, #F9FAFB);
+			}
+
+			h2 {
+				@include text(300, 24px, 32px, #F9FAFB);
+			}
+		}
+	}
+
+	section.footer-author {
+		@include flex(center, space-between);
+
+		> p {
+			@include text(300, 12px, 16px, #4B5563);
+			max-width: 1146px;
+		}
+
+		nav.footer-description-author-way {
+			text-align: end;
+			width: 242px;
+
+			p {
+				@include text(400, 12px, 16px, #6B7280);
+			}
+
+			a {
+				@include text(400, 12px, 16px, #6B7280)
+			}
+		}
+	}
+}

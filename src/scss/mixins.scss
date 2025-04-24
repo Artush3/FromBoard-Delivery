@@ -1,0 +1,77 @@
+@mixin flex($align-items:stretch, $justify-content:flex-start) {
+    display: flex;
+    align-items: $align-items;
+    justify-content: $justify-content;
+    @content;
+};
+
+@mixin text($font-weight, $font-size, $line-height, $color:#111827) {
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $line-height;
+    color: $color;
+    @content
+};
+
+@mixin link($color:#111827) {
+    @include text(700, 16px, 24px, $color) {
+        transition: all .3s ease-in-out
+    };
+
+    &:hover {
+        color: #8B5CF6;
+    }
+};
+
+@mixin button($width, $height, $border-radius) {
+    width: $width;
+    height: $height;
+    border-radius: $border-radius;
+    background-color: #8B5CF6;
+    @include text(700, 16px, 24px, #F9FAFB);
+    transition: all .3s ease-in-out;
+
+    &:hover {
+        background-color: #A78BFA;
+    }
+};
+
+@mixin main_block($padding, $background-color) {
+    padding: $padding 0;
+    background-color: $background-color;
+};
+
+@mixin grid($repeat, $gap) {
+	display: grid;
+	grid-template-columns: repeat($repeat, 1fr);
+	grid-gap: $gap;
+    @content;
+};
+
+@mixin input {
+    border: 2px solid #111827;
+	border-radius: 4px;
+	height: 48px;
+	width: 100%;
+	padding: 0 10px;
+    transition: all .3s ease-in-out;
+
+    &::placeholder {
+        @include text(400, 16px, 24px, #9CA3AF);
+        transition: all .3s ease-in-out;
+    }
+
+    &:hover {
+        border-color: #8B5CF6;
+
+        &::placeholder {
+            color: #8B5CF6;
+        }
+    }
+
+    &:focus {
+        &::placeholder {
+            color: #111827;
+        }
+    }
+}
